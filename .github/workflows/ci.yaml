@@ -12,14 +12,14 @@ on:
 # creating jobs
 jobs:
   test-job:
-  runs-on: ubuntu-latest
-  steps: #what exactly you want to run in ubuntu machine
-  - name: my first step to test github action
-    run: |
-      echo "Hello world"
-      whoami
-      git version
-      ls -a
+    runs-on: ubuntu-latest
+    steps: #what exactly you want to run in ubuntu machine
+    - name: my first step to test github action
+      run: |
+        echo "Hello world"
+        whoami
+        git version
+        ls -a
 
 build-job:
 infra-job:
