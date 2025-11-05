@@ -21,6 +21,6 @@ jobs:
         git version
         ls -a
 
-build-job:
-infra-job:
+#build-job:
+#infra-job:
 
