@@ -16,7 +16,7 @@ jobs:
   steps: #what exactly you want to run in ubuntu machine
   - name: my first step to test github action
     run: |
-      "echo "Hello world"
+      echo "Hello world"
       whoami
       git version
       ls -a
