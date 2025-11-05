@@ -17,3 +17,11 @@ variable "vm-name" {
     type = string
   
 }
+
+variable "key_algo" {
+    type = string  
+}
+
+variable "key_size" {
+    type = number  
+}

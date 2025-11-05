@@ -3,7 +3,7 @@ resource "aws_instance" "example" {
  #ami           = "ami-0a25a306450a2cba3"
   ami = var.sdas-ami-id
   instance_type = var.vm-size-sd
-  key_name      = var.ec2-key-name
+  key_name      = aws_key_pair.ec2_key_pair.key_name
   # changing tags_all to tags
   tags = {
     "Name" = var.vm-name
