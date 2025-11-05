@@ -1,4 +1,13 @@
 terraform {
+
+  backend "s3" {
+    bucket = "sdas-roche-terraform-bucket"
+    key = "dev/sdas/terraform.tfstate"
+    dynamodb_table = "sdas-roche-table1"
+    region = "ap-southeast-2"
+    encrypt = true
+  }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
