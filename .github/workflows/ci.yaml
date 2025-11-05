@@ -20,12 +20,18 @@ jobs:
       with:
         ref: dryrun-aws
 
+    #terraform installing
+    - name: installing terraform
+      uses: hashicorp/setup-terraform@v3
+
+    #running some commands
     - name: my first step to test github action
       run: |
         echo "Hello world"
         whoami
         git version
         ls -a
+
 
 
 
