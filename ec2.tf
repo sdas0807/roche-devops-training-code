@@ -1,11 +1,12 @@
 # creating ec2
 resource "aws_instance" "example" {
-  ami           = "ami-0a25a306450a2cba3"
-  instance_type = "t2.nano"
-  key_name      = "roche-key"
+ #ami           = "ami-0a25a306450a2cba3"
+  ami = var.sdas-ami-id
+  instance_type = var.vm-size-sd
+  key_name      = var.ec2-key-name
   # changing tags_all to tags
   tags = {
-    "Name" = "sdas-vm"
+    "Name" = var.vm-name
   }
 }
 resource "local_file" "ip_file" {
