@@ -48,7 +48,7 @@ jobs:
       run: |
         echo " implementing terraform deals"
         terraform init 
-        terraform plan
+        terraform plan -lock=false
         sleep 2
         terraform apply --auto-approve
 
@@ -75,6 +75,7 @@ jobs:
       run: | 
         echo "checking resoruces"
         terraform init 
+        terraform plan -lock=false
         terraform state list
         terraform destroy --auto-approve
 
