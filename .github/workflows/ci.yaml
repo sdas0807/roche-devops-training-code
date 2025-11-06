@@ -11,7 +11,7 @@ on:
 
 # creating jobs
 jobs:
-  test-job:
+  infra-provision-job:
     runs-on: ubuntu-latest
     steps: #what exactly you want to run in ubuntu machine
     #calling first github action to clone my dryrun-aws data to runner machine
@@ -44,8 +44,39 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-southeast-2
 
+    - name: deploy terraform resources
+      run: |
+        echo " implementing terraform deals"
+        terraform init 
+        terraform plan
+        sleep 2
+        terraform apply --auto-approve
 
+  infra-destroy-job:
+    needs: infra-provision-job
+    runs-on: ubuntu-latest
+    steps:
+    - name: checking out code 
+      uses: actions/checkout@v5
+      with:
+        ref: master 
+    - name: login to aws creds 
+      uses: aws-actions/configure-aws-credentials@v5.1.0
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-southeast-2 
 
+    # installing  
+    - name: installing terraform 
+      uses: hashicorp/setup-terraform@v3
+
+    - name: destroying it 
+      run: | 
+        echo "checking resoruces"
+        terraform init 
+        terraform state list
+        terraform destroy --auto-approve
 
 
 

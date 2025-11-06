@@ -25,3 +25,16 @@ variable "key_algo" {
 variable "key_size" {
     type = number  
 }
+
+variable "my-vpc-id" {
+    
+}
+
+variable "my-sec-group-name" {
+    
+  
+}
+
+variable "number_of_vm" {
+  
+}
