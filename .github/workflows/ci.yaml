@@ -35,7 +35,8 @@ jobs:
    # - name: connecting with aws
 
     -  name: connecting with aws
-       run: echo "My secret value is: ${{ secrets.MY_API_KEY }}"
+       run: echo "My secret value is ${{ secrets.MY_API_KEY }}"
+
     -  name: Configure AWS Credentials
        uses: aws-actions/configure-aws-credentials@v4
        with:
