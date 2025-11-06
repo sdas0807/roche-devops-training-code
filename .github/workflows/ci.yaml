@@ -74,6 +74,7 @@ jobs:
     - name: destroying it 
       run: | 
         echo "checking resoruces"
+        sleep 2
         terraform init 
         terraform plan -lock=false
         terraform state list
