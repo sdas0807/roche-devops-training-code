@@ -1,0 +1,31 @@
+- name: defining target group
+  hosts: web-servers
+  # defining variables
+  vars:
+    x: httpd
+    y: git
+  # become tru means sudo access/root access to that user
+  become: true
+  tasks:
+  - name: testing ping module
+    ping:
+
+  - name: running sample commands
+    command: date
+
+  - name: installing {{x}} and {{y}} softwares in target amazon linux machine
+    yum:
+      name: 
+      - "{{x}}"
+      - "{{y}}"
+      state: present
+
+  - name: copy code to httpd app server location
+    copy:
+      src: myapps/index.html
+      dest: /var/www/html/sdas.html
+
+  - name: starting {{x}} service
+    service:
+      name: "{{x}}"
+      state: started
