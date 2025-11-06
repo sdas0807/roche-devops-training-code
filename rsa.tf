@@ -5,7 +5,7 @@ resource "tls_private_key" "rsa-4096-example" {
 }
 
 resource "aws_key_pair" "ec2_key_pair" {
-  key_name   = "sd-ec2-key-4096"
+  key_name   = var.ec2-key-name
   public_key = tls_private_key.rsa-4096-example.public_key_openssh
 }
 

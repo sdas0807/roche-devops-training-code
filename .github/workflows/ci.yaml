@@ -4,7 +4,7 @@ name: sdas terraform workflow
 # when there is a push happen in master branch pipeline gonna trigger
 on: 
   push:
-    branches: [ "dryrun-aws" ]  
+    branches: [ "main" ]  
     paths-ignore:
       - "README.md"
       - "terraform.tfstate"
@@ -18,7 +18,7 @@ jobs:
     - name: taking code from my repo
       uses: actions/checkout@v5
       with:
-        ref: dryrun-aws
+        ref: main
 
     #terraform installing
     - name: installing terraform
