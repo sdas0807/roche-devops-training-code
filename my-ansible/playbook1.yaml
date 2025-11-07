@@ -1,33 +1,40 @@
 - name: defining target group
   hosts: sdas-roche
-  
-  # defining variables
-  vars:
-    x: httpd
-    y: git
-  # become tru means sudo access/root access to that user
   become: true
-  tasks:
-  - name: testing ping module
-    ping:
+  roles:
+  - apache-webserver
+  #- mysql-server-setup
 
-  - name: running sample commands
-    command: date
 
-  - name: installing {{x}} and {{y}} softwares in target amazon linux machine
-    yum:
-      name: 
-      - "{{x}}"
-      - "{{y}}"
-      state: present
 
-  - name: copy code to httpd app server location
-    copy:
-      src: myapps/index.html
-      dest: /var/www/html/html/
+  
+  # # defining variables
+  # vars:
+  #   x: httpd
+  #   y: git
+  # # become tru means sudo access/root access to that user
+  # become: true
+  # tasks:
+  # - name: testing ping module
+  #   ping:
 
-  - name: starting {{x}} service
-    service:
-      name: "{{x}}"
-      state: started
-      enabled: yes
+  # - name: running sample commands
+  #   command: date
+
+  # - name: installing {{x}} and {{y}} softwares in target amazon linux machine
+  #   yum:
+  #     name: 
+  #     - "{{x}}"
+  #     - "{{y}}"
+  #     state: present
+
+  # - name: copy code to httpd app server location
+  #   copy:
+  #     src: myapps/index.html
+  #     dest: /var/www/html/html/
+
+  # - name: starting {{x}} service
+  #   service:
+  #     name: "{{x}}"
+  #     state: started
+  #     enabled: yes
