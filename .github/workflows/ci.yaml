@@ -57,7 +57,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: sdas-github-artifact
-        path: modules/ec2/ansible.inventory.txt 
+        path: modules/ec2/ansible-inventory.txt 
 
   infra-destroy-job:
     needs: infra-provision-job
