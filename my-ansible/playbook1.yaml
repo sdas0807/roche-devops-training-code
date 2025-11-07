@@ -1,5 +1,6 @@
 - name: defining target group
   hosts: sdas-roche
+  become: true
   roles:
   - apache-webserver
   #- mysql-server-setup

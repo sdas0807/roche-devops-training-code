@@ -3,18 +3,18 @@
 
 ---
 - name: Install Apache HTTPD
-    yum:
+  yum:
         name: httpd
         state: present
 
 - name: Deploy Apache web content from template
-    template:
+  template:
         src: index.html.j2
         dest: /var/www/html/index.html
     notify: Restart Apache
 
 - name: Ensure Apache service is running
-    systemd:
+  systemd:
         name: httpd
         state: started
         enabled: yes
