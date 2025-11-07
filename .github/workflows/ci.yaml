@@ -107,14 +107,14 @@ jobs:
         cd my-ansible
         ansible-playbook -i ansible-inventory.txt --private-key ../sd-ec2-key-4096.pem playbook1.yaml
 
-    destroy-job-terraform
-      runs-on: ubuntu-latest
-      needs: infra-configure-job
-      steps:
-    -name: 
+    # destroy-job-terraform
+    #   runs-on: ubuntu-latest
+    #   needs: infra-configure-job
+    #   steps:
+    # -name: 
 
-    -name: checkout github code of terraform only
-     uses: actions/checkout@v5
+    # -name: checkout github code of terraform only
+    #  uses: actions/checkout@v5
 
     #  uses: hashicorp/setup-terraform@v3
 
