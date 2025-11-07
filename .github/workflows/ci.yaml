@@ -44,9 +44,9 @@ jobs:
       run: | 
         echo "implementing terraform deals"
         terraform init 
-        terraform plan 
+        terraform plan -lock=false 
         sleep 2
-        terraform apply --auto-approve 
+        terraform apply -lock=false --auto-approve 
         ls modules/ec2
 # creating artifact and uploading ansible inventory file 
     - name: uploading ansible inventory to github artifacts
@@ -119,8 +119,8 @@ jobs:
       run: |
         echo "destroying Infra"
         terraform init 
-        terraform plan 
-        terraform destroy --auto-approve  
+        terraform plan -lock=false
+        terraform destroy -lock=false --auto-approve  
 
 
     
