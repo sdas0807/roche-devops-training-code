@@ -97,8 +97,16 @@ jobs:
       run: |
         echo "setup of ansible in ubuntu machine"
         sudo apt update
-        sudo apt install ansible -y
+        sudo apt install ansible2 -y
         ansible --version 
+
+    - name: running ansible playbook in dynamic inventory
+      run: | 
+        echo "Running ansible playbook"
+        chmod 400 sd-ec2-key-4096.pem
+        cd my-ansible
+        ansible-playbook -i ansible-inventory.txt --private.key ../sd-ec2-key-4096.pem playbook1.yaml
+
     #  uses: hashicorp/setup-terraform@v3
 
     # - name: destroying it 
