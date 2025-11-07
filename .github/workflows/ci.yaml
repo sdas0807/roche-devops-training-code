@@ -97,7 +97,6 @@ jobs:
         terraform state list
         terraform destroy -lock=false --auto-approve
 
-
   
   
 
