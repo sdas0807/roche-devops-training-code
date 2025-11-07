@@ -66,7 +66,7 @@ jobs:
     - name: checking out code 
       uses: actions/checkout@v5
       with:
-        ref: master 
+        ref: main
     - name: login to aws creds 
       uses: aws-actions/configure-aws-credentials@v5.1.0
       with:
