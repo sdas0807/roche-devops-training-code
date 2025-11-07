@@ -1,8 +1,8 @@
-name: ashuothshh job 
+name: sdas job 
 # trigger point 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
     paths-ignore:
       - "README.md"
       - "terraform.tfstate"
