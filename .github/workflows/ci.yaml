@@ -4,7 +4,7 @@ name: sdas terraform workflow
 # when there is a push happen in master branch pipeline gonna trigger
 on: 
   push:
-    branches: [ "main" ]  
+    branches: [ "master1" ]  
     paths-ignore:
       - "README.md"
       - "terraform.tfstate"
