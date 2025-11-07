@@ -52,6 +52,13 @@ jobs:
         sleep 2
         terraform apply -lock=false --auto-approve
 
+  # creating artifact and uploading to 
+    - name: uploading ansible inventory to github artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: sdas-github-artifact
+        path: modules/ec2/ansible.inventory.txt 
+
   infra-destroy-job:
     needs: infra-provision-job
     runs-on: ubuntu-latest
@@ -67,6 +74,16 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ap-southeast-2 
 
+    # downloading artifact
+    - name: downloading ansible inventory from artifact
+      uses: actions/download-artifact@v5
+      with:
+        name: sdas-github-artifact
+        
+    # listing artifact
+    - name: Display structure of downloaded files
+      run: ls -R
+
     # installing  
     - name: installing terraform 
       uses: hashicorp/setup-terraform@v3
@@ -80,7 +97,8 @@ jobs:
         terraform state list
         terraform destroy -lock=false --auto-approve
 
-
+  
+  
 
 
 #build-job:

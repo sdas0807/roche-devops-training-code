@@ -12,31 +12,27 @@ resource "aws_instance" "example" {
     "Name" = "${var.vm-name}-${count.index}"
   }
 
-  #provisioner
-provisioner "remote-exec" {
-inline = [
-  "sudo dnf install git httpd -y",
-  "mkdir -p hello/terraform"  
- ]
+#   #provisioner
+# provisioner "remote-exec" {
+# inline = [
+#   "sudo dnf install git httpd -y",
+#   "mkdir -p hello/terraform"  
+#  ]
 
-}
+# }
 
-connection {
-type = "ssh"
-user = "ec2-user"
-host = self.public_ip
-#content of private key data
-private_key = tls_private_key.rsa-4096-example.private_key_pem
+# connection {
+# type = "ssh"
+# user = "ec2-user"
+# host = self.public_ip
+# #content of private key data
+# private_key = tls_private_key.rsa-4096-example.private_key_pem
 
-}
+# }
   
 }
-resource "local_file" "ip_file" {
-    content  = join("\n",aws_instance.example[*].public_ip)
-    filename = "ec2_public_ip.txt"
-    #making manual dependency
-    depends_on = [ aws_instance.example ]
-}
+
+
 
 
 

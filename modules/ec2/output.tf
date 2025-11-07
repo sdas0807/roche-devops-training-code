@@ -8,3 +8,10 @@ output "my-ec2-ip" {
 output "my-ec2-ID" {
   value = aws_instance.example[*].id
 }
+
+resource "local_file" "ip_file" {
+    content  = join("\n",aws_instance.example[*].public_ip)
+    filename = "${path.module}/ansible-inventory.txt"
+    #making manual dependency
+    depends_on = [ aws_instance.example ]
+}
